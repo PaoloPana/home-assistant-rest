@@ -5,6 +5,7 @@ use std::vec::Vec;
 
 use chrono::{DateTime, FixedOffset};
 use serde::{Deserialize, Serialize};
+use serde_json::Value;
 
 pub struct Request<S: Serialize> {
     pub endpoint: String,
@@ -20,13 +21,13 @@ pub trait Requestable {
 #[derive(Serialize, Debug)]
 pub struct StateRequestBody {
     pub state: String,
-    pub attributes: HashMap<String, String>,
+    pub attributes: HashMap<String, Value>,
 }
 
 pub struct StateParams {
     pub entity_id: String,
     pub state: String,
-    pub attributes: HashMap<String, String>,
+    pub attributes: HashMap<String, Value>,
 }
 
 impl Requestable for StateParams {
