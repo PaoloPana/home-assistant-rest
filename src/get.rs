@@ -55,7 +55,13 @@ pub type ServicesResponse = Vec<ServiceEntry>;
 #[derive(Deserialize, Debug)]
 pub struct ServiceEntry {
     pub domain: String,
-    pub services: Vec<String>,
+    pub services: HashMap<String, ServiceObject>,
+}
+
+#[derive(Deserialize, Debug, Clone)]
+pub struct ServiceObject {
+    pub name: String,
+    pub description: String,
 }
 
 #[derive(Default)]
